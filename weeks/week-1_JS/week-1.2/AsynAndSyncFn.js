@@ -5,6 +5,32 @@
 
 // Synchronous Example:
 
+// function findsum(n){
+//     let ans = 0;
+//     for ( i=0;i<=n;i++){
+//         ans = ans + i;
+//     }
+//     return ans;
+// }
+
+// function findsumtill100(){
+//     console.log(findsum(100));
+// }
+
+// //busy waiting
+
+// function syncSleep(){
+//     let a = 1;
+//     for (let i = 0; i < 10000000000; i++) {
+//         a ++;
+//     }
+// }
+
+// syncSleep();
+// findsumtill100();
+// console.log("hello world");
+
+
 function findsum(n){
     let ans = 0;
     for ( i=0;i<=n;i++){
@@ -17,15 +43,6 @@ function findsumtill100(){
     console.log(findsum(100));
 }
 
-//busy waiting
 
-function syncSleep(){
-    let a = 1;
-    for (let i = 0; i < 10000000000; i++) {
-        a ++;
-    }
-}
-
-syncSleep();
-findsumtill100();
+setTimeout(findsumtill100, 1000);
 console.log("hello world");
