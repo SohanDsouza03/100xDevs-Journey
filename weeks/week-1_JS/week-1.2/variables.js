@@ -19,6 +19,4 @@ b=2;
 const c=100;
 console.log(c);
 
-// const c=200;             //<-- cants change onces declared
-// console.log(c);
-
+// con=

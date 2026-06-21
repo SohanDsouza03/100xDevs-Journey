@@ -31,18 +31,39 @@
 // console.log("hello world");
 
 
-function findsum(n){
-    let ans = 0;
-    for ( i=0;i<=n;i++){
-        ans = ans + i;
-    }
-    return ans;
-}
+// function findsum(n){
+//     let ans = 0;
+//     for ( i=0;i<=n;i++){
+//         ans = ans + i;
+// //     }
+//     return ans;
+// }
 
-function findsumtill100(){
-    console.log(findsum(100));
-}
+// function findsumtill100(){
+//     console.log(findsum(100));
+// }
 
 
-setTimeout(findsumtill100, 1000);
+// setTimeout(findsumtill100, 1000);
+// console.log("hello world");
+
+// what are common acyn functions in JS?
+    // setTimeout
+    // setInterval
+    // Promise
+    // async/await
+
+    //fs.readFile-to read a file from the file system
+    // fetch-to make HTTP requests to a server
+
+
+//lets try using asys function to read a file using fs.readFile
+
+const fs = require('fs');
+//filesystem module
+
+fs.readFile("async.txt", "utf-8", function(err, data){
+    console.log(data);
+});
+
 console.log("hello world");

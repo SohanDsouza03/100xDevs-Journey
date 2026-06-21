@@ -25,4 +25,4 @@ let ans = sumOfSomething(2,3,square);
 console.log(ans);
 
 let ans2 = sumOfSomething(2,3,cube);
-console.log(ans2);
+console.log(ans2);  
