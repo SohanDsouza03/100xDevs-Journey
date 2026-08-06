@@ -1,5 +1,7 @@
-function logit(str,i,arr){
-    console.log(str+"  says hi to "+i+" from " +arr);
+function logit(value, index, array) {
+    console.log(value + " says hi to " + index + " from " + array);
 }
-const arr=[1,2,3,4,5];
-arr.forEach(logit);
+
+const arr = [1, 2, 3, 4, 5];
+
+arr.forEach((value, index, array) => logit(value, index, array));
