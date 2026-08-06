@@ -1,16 +1,20 @@
-const users=[{
-    fname:"Sohan",
-    gender:"male"
-},{
-    fname:"steven",
-    gender:"male"
-},{
-    fname:"Sharon",
-    gender:"female"
-},
+const users = [
+    {
+        fname: "Sohan",
+        gender: "male"
+    },
+    {
+        fname: "Steven",
+        gender: "male"
+    },
+    {
+        fname: "Sharon",
+        gender: "female"
+    }
 ];
-for( let i=0;i<users.length;i++){
-    if(users[i]["gender"]==="male"){
-        console.log(users[i]["fname"]);
+
+for (const user of users) {
+    if (user.gender === "male") {
+        console.log(user.fname);
     }
 }
