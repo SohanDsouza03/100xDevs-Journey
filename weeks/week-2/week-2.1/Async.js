@@ -56,24 +56,49 @@ console.log(ans);
 
 
 // Synchronous JavaScript
-//
-//        │
-//        ▼
-//
+//         │
+//         │ Executes line by line
+//         ▼
 // Asynchronous JavaScript
-//        │
-//        ├──────────► Callback
-//        │
-//        ├──────────► setTimeout()
-//        │
-//        ├──────────► fs.readFile()
-//        │
-//        ├──────────► Promise
-//        │              │
-//        │              ├── resolve()
-//        │              ├── reject()
-//        │              ├── .then()
-//        │              ├── .catch()
-//        │              └── .finally()
-//        │
-//        └──────────► async / await
+//         │
+//         │ Runs long tasks without blocking
+//         ▼
+// Callback
+//         │
+//         │ Executes a function after another task finishes
+//         ▼
+// Callback Hell
+//         │
+//         │ Too much nested code
+//         ▼
+// Promise
+//         │
+//         ├── new Promise()
+//         ├── resolve()
+//         ├── reject()
+//         ├── .then()
+//         ├── .catch()
+//         └── .finally()
+//         │
+//         │ Cleaner than callbacks
+//         ▼
+// async / await
+//         │
+//         ├── async function
+//         ├── await
+//         ├── try...catch
+//         └── Makes Promise code look synchronous
+
+
+
+
+
+
+// async is a keyword used before a function to make it asynchronous. An async function always returns a Promise.
+
+
+async function greet() {
+    return "Hello Bro!";
+}
+
+console.log(greet());
