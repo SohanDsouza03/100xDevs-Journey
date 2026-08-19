@@ -44,7 +44,7 @@
 
 
 
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -74,10 +74,69 @@
 
     </script>
 
-    <!-- Calls the function when the button is clicked -->
-    <button onclick="getAnimalData()">Get Animal Data</button>
+    Calls the function when the button is clicked -->
+    <!-- <button onclick="getAnimalData()">Get Animal Data</button>
+
+</body>
+
+</html> -->
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <!-- Makes the page responsive on different screen sizes -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Fetch API</title>
+</head>
+
+<body>
+
+    <script>
+
+        // Async function allows us to use await
+        async function getUserData() {
+
+            // Wait for the API to return a response
+            const response = await fetch(
+                "https://api.escuelajs.co/api/v1/users"
+            );
+
+            // Convert the response from JSON into JavaScript data
+            const finaldata = await response.json();
+
+            // Display the data inside the element with id="userdata"
+            document.getElementById("userdata").innerHTML =
+                JSON.stringify(finaldata);
+
+        }
+
+    </script>
+
+    <!-- Calls getUserData() when the button is clicked -->
+    <button onclick="getUserData()">Get User Data</button>
+
+    <!-- Data from the API will be displayed here -->
+    <div id="userdata"></div>
 
 </body>
 
 </html>
+
+
+
+
+
+
+
+
+
+
 
