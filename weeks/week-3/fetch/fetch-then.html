@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Fetch - Then</title>
+</head>
+
+<body>
+
+    <script>
+
+        // Function runs when the button is clicked
+        function getAnimalData() {
+
+            // fetch() sends a GET request to the API
+            fetch("https://api.escuelajs.co/api/v1/users")
+
+                // Receives the server response
+                .then(function(response) {
+
+                    // Convert response body from JSON
+                    response.json()
+
+                        // Receives the actual data
+                        .then(function(data) {
+
+                            // Print data in the console
+                            console.log(data);
+
+                        });
+                });
+        }
+
+    </script>
+
+    <!-- Calls getAnimalData() when clicked -->
+    <button onclick="getAnimalData()">Get Animal Data</button>
+
+</body>
+
+</html>
