@@ -1,3 +1,6 @@
+// Zod is a schema validation library that allows developers to define the expected structure and rules of data and validate incoming data against those rules.
+
+
 const express = require("express");
 const z = require("zod");
 
@@ -68,3 +71,75 @@ app.post("/health-checkup", function (req, res) {
 app.listen(3000, () => {
     console.log("Server running on port 3000");
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//  One very important distinction
+
+// Don't confuse these three things:
+
+// Express
+
+// Handles HTTP requests and responses.
+
+// const express = require("express");
+// Middleware
+
+// Runs between the request and the final route.
+
+// function middleware(req, res, next) {
+//     ...
+// }
+// Zod
+
+// Validates whether data has the expected structure/type/value.
+
+// const schema = z.string();
+
+// So they work together:
+
+//                  Client
+//                    │
+//                    ▼
+//                 Express
+//                    │
+//                    ▼
+//               Middleware
+//                    │
+//                    ▼
+//                  Zod
+//                    │
+//              Validate input
+//                 /     \
+//              Valid   Invalid
+//                │        │
+//                ▼        ▼
+//              Route    Error
+
+
+
+
+
+
+
+
+
+
+
+
+
