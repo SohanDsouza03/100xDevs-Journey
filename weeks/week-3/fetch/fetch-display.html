@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Fetch - Display Data</title>
+</head>
+
+<body>
+
+    <script>
+
+        // Async function to fetch user data
+        async function getUserData() {
+
+            // Wait for the API response
+            const response = await fetch(
+                "https://api.escuelajs.co/api/v1/users"
+            );
+
+            // Convert response into JavaScript data
+            const finalData = await response.json();
+
+            // Display the data inside the div
+            document.getElementById("userData").innerHTML =
+                JSON.stringify(finalData);
+
+        }
+
+    </script>
+
+    <!-- Area where API data will be displayed -->
+    <div id="userData"></div>
+
+    <!-- Calls getUserData() when clicked -->
+    <button onclick="getUserData()">Get User Data</button>
+
+</body>
+
+</html>
