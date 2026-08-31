@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Fetch Sum</title>
+
+    <script>
+
+        // =====================================================
+        // METHOD 1: Using Promises with .then()
+        // =====================================================
+
+        function calculateSum() {
+
+            // Get the value entered in the first input
+            const firstNumber =
+                document.getElementById("firstNumber").value;
+
+            // Get the value entered in the second input
+            const secondNumber =
+                document.getElementById("secondNumber").value;
+
+
+            // Send the two numbers to the server using fetch()
+            const response = fetch(
+                "https://sum-server.100xdevs.com/sum?a="
+                + firstNumber
+                + "&b="
+                + secondNumber
+            );
+
+
+            // fetch() returns a Promise.
+            // .then() runs when the Promise is resolved.
+            response.then(function (response) {
+
+                // Convert the response into text.
+                return response.text();
+
+            }).then(function (answer) {
+
+                // Display the answer inside the div
+                // with id="finalSum".
+                document.getElementById("finalSum").innerHTML = answer;
+
+            });
+        }
+
+
+        // =====================================================
+        // METHOD 2: Using async/await
+        // =====================================================
+
+        async function calculateSumAsync() {
+
+            // Get the first number from the input
+            const firstNumber =
+                document.getElementById("firstNumber").value;
+
+            // Get the second number from the input
+            const secondNumber =
+                document.getElementById("secondNumber").value;
+
+
+            // fetch() returns a Promise.
+            // await waits for the Promise to resolve.
+            const response = await fetch(
+                "https://sum-server.100xdevs.com/sum?a="
+                + firstNumber
+                + "&b="
+                + secondNumber
+            );
+
+
+            // Convert the server response into text.
+            const answer = await response.text();
+
+
+            // Display the answer on the webpage.
+            document.getElementById("finalSum").innerHTML = answer;
+        }
+
+    </script>
+</head>
+
+<body>
+
+    <h2>Sum Calculator</h2>
+
+    <!-- Input for the first number -->
+    <input
+        id="firstNumber"
+        type="text"
+        placeholder="First number"
+    >
+
+    <br><br>
+
+    <!-- Input for the second number -->
+    <input
+        id="secondNumber"
+        type="text"
+        placeholder="Second number"
+    >
+
+    <br><br>
+
+    <!-- Calls calculateSum() when clicked -->
+    <button onclick="calculateSum()">
+        Calculate Sum (Promise)
+    </button>
+
+    <br><br>
+
+    <!-- Calls calculateSumAsync() when clicked -->
+    <button onclick="calculateSumAsync()">
+        Calculate Sum (Async/Await)
+    </button>
+
+    <br><br>
+
+    <!-- The result from the server will appear here -->
+    <div id="finalSum"></div>
+
+</body>
+</html>
