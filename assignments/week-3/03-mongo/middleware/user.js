@@ -1,23 +1,21 @@
-const {User}=require('../db/index.js');
+const { User } = require("../db");
 
-
-// Middleware for handling auth
-function userMiddleware(req, res, next) {
-    // Implement user auth logic
-    // You need to check the headers and validate the user from the user DB. Check readme for the exact headers to be expected
+async function userMiddleware(req, res, next) {
     const username = req.headers.username;
     const password = req.headers.password;
-    User.findOne({
+
+    const user = await User.findOne({
         username: username,
         password: password
-    })
-        .then(function (value){
-            if(value){
-                next();
-            }else{
-                res.status(403).json({ message: 'User authentication failed' });
-            }
-        })
+    });
+
+    if (user) {
+        next();
+    } else {
+        res.status(403).json({
+            message: "User authentication failed"
+        });
     }
+}
 
 module.exports = userMiddleware;
