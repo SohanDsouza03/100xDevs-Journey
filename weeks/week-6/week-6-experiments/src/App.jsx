@@ -1,31 +1,31 @@
-import React, {Fragment} from 'react'
-import {useState} from 'react'
+import { useState } from "react";
 
 function App() {
-  const [title, setTitle] = useState("My name is Sohan");
-  
+  return (
+    <div>
+      <HeaderWithButton />
+      <Header title="My name is Carol" />
+    </div>
+  );
+}
 
-  function updatetitle() {
-    setTitle("My name is "+ Math.random());
+function HeaderWithButton() {
+  const [firstTitle, setFirstTitle] = useState("my name is Sohan");
+
+  function changeTitle() {
+    setFirstTitle("My name is " + Math.random());
   }
 
-
-   
   return (
-    <Fragment>
-      <button onClick={updatetitle}>update the  title</button>
-      <Header title={title} />
-      <Header title="My name is carol" />
-      <Header title="my name is Sohan1" />
-      <Header title="My name is carol1" />
-    </Fragment>
-  )
+    <>
+      <button onClick={changeTitle}>Click me to change the title</button>
+      <Header title={firstTitle} />
+    </>
+  );
 }
 
-function Header({title}) {
-  return <div>
-    {title}
-  </div>
+function Header({ title }) {
+  return <div>{title}</div>;
 }
 
-export default App
+export default App;
