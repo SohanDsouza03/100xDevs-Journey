@@ -1,28 +1,81 @@
+import React, { useState } from "react";
+import "./App.css";
+
+function initialValue() {
+  console.log("function called!");
+  return 0;
+}
+
 function App() {
+  const [name, setName] = useState("Dipesh");
+  const [flag, setFlag] = useState(false);
+  const [steps, setSteps] = useState(initialValue());
+  const [names, setNames] = useState([]);
+
+  function changeName() {
+    console.log("clicked!");
+    setFlag(!flag);
+  }
+
+  function increment() {
+    setSteps((prevState) => prevState + 1);
+    setSteps((prevState) => prevState + 1);
+  }
+
+  function decrement() {
+    return setSteps(steps - 1);
+  }
+
+  function addNames(e) {
+    e.preventDefault();
+
+    setNames([
+      ...names,
+      {
+        id: names.length,
+        name: name,
+      },
+    ]);
+
+    setName("");
+  }
 
   return (
-    <div style={{display: "flex"}}>
-      <Card>
-        hi there
-      </Card>
-      <Card>
-        <div>
-          hello from the 2nd card
-        </div>
-      </Card>
+    <div className="App">
+      <div>Hello, {flag ? name : ""}</div>
+
+      <button onClick={changeName}>Click Me</button>
+
+      <hr />
+
+      <button onClick={increment}>+</button>
+
+      <div>{steps}</div>
+
+      <button onClick={decrement}>-</button>
+
+      <hr />
+
+      <form onSubmit={addNames}>
+        <input
+          type="text"
+          value={name}
+          placeholder="add names"
+          onChange={(e) => setName(e.target.value)}
+        />
+
+        <button>Submit</button>
+      </form>
+
+      <hr />
+
+      <ul>
+        {names.map((item) => (
+          <li key={item.id}>{item.name}</li>
+        ))}
+      </ul>
     </div>
-  )
+  );
 }
 
-function Card({children}) {
-  return <div style={{
-    border: "1px solid black",
-    padding: 10,
-    margin: 10
-  }}>
-    {children}
-  </div>
-}
-
-export default App
-
+export default App;
