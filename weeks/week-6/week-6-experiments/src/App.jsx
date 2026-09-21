@@ -1,81 +1,38 @@
-import React, { useState } from "react";
-import "./App.css";
-
-function initialValue() {
-  console.log("function called!");
-  return 0;
-}
+import { useState } from 'react'
 
 function App() {
-  const [name, setName] = useState("Dipesh");
-  const [flag, setFlag] = useState(false);
-  const [steps, setSteps] = useState(initialValue());
-  const [names, setNames] = useState([]);
+  const [exchangeData, setExchangeData] = useState({});
+  const [bankData, setBankData] = useState({});
 
-  function changeName() {
-    console.log("clicked!");
-    setFlag(!flag);
-  }
 
-  function increment() {
-    setSteps((prevState) => prevState + 1);
-    setSteps((prevState) => prevState + 1);
-  }
+  console.log("re-rendersing App.jsx");
 
-  function decrement() {
-    return setSteps(steps - 1);
-  }
+  // fetch("https://google.com", async (res) => {
+  //   const json = await res.json();
+  //   setBankData({ income: 100 });
+  //   // Assume it is { income: 100 }
+  // });
 
-  function addNames(e) {
-    e.preventDefault();
 
-    setNames([
-      ...names,
-      {
-        id: names.length,
-        name: name,
-      },
-    ]);
+  setTimeout(() => {
+    setBankData({
+      income: 100
+    });
+  }, 3000);
 
-    setName("");
-  }
+  setTimeout(() => {
+    setExchangeData({
+      returns: 100
+    });
+  }, 1000);
+
+  const incomeTax = (bankData.income + exchangeData.returns) * 0.3;
 
   return (
-    <div className="App">
-      <div>Hello, {flag ? name : ""}</div>
-
-      <button onClick={changeName}>Click Me</button>
-
-      <hr />
-
-      <button onClick={increment}>+</button>
-
-      <div>{steps}</div>
-
-      <button onClick={decrement}>-</button>
-
-      <hr />
-
-      <form onSubmit={addNames}>
-        <input
-          type="text"
-          value={name}
-          placeholder="add names"
-          onChange={(e) => setName(e.target.value)}
-        />
-
-        <button>Submit</button>
-      </form>
-
-      <hr />
-
-      <ul>
-        {names.map((item) => (
-          <li key={item.id}>{item.name}</li>
-        ))}
-      </ul>
+    <div>
+      hi there, your income tax returns are {incomeTax}
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
