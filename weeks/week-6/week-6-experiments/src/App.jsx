@@ -1,11 +1,11 @@
-import { useState } from 'react'
+import { useState ,useEffect} from 'react'
 
 function App() {
   const [exchangeData, setExchangeData] = useState({});
   const [bankData, setBankData] = useState({});
 
 
-  console.log("re-rendersing App.jsx");
+  console.log("hey there is a re-render");
 
   // fetch("https://google.com", async (res) => {
   //   const json = await res.json();
@@ -13,18 +13,23 @@ function App() {
   //   // Assume it is { income: 100 }
   // });
 
-
-  setTimeout(() => {
+    useEffect(() => {
+      setTimeout(() => {
     setBankData({
       income: 100
     });
   }, 3000);
+}, []);
 
+
+useEffect(() => {
   setTimeout(() => {
     setExchangeData({
       returns: 100
     });
   }, 1000);
+}, []);
+        
 
   const incomeTax = (bankData.income + exchangeData.returns) * 0.3;
 
