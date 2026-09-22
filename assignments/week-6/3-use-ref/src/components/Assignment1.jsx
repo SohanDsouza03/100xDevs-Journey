@@ -1,28 +1,31 @@
-import React, { useState, useCallback } from 'react';
+import { useEffect, useRef } from "react";
 
-export function Assignment2() {
-    const [inputText, setInputText] = useState('');
+// Create a component with a text input field and a button.
+// When the component mounts or the button is clicked,
+// automatically focus the text input field using useRef.
 
-    // Your code starts here
-    const showAlert = useCallback(() => {
-        alert(inputText);
-    }, [inputText]);
-    // Your code ends here
+export function Assignment1() {
+    const inputRef = useRef(null);
+
+    useEffect(() => {
+        inputRef.current.focus();
+    }, []);
+
+    const handleButtonClick = () => {
+        inputRef.current.focus();
+    };
 
     return (
         <div>
             <input
+                ref={inputRef}
                 type="text"
-                value={inputText}
-                onChange={(e) => setInputText(e.target.value)}
-                placeholder="Enter some text"
+                placeholder="Enter text here"
             />
 
-            <Alert showAlert={showAlert} />
+            <button onClick={handleButtonClick}>
+                Focus Input
+            </button>
         </div>
     );
-}
-
-function Alert({ showAlert }) {
-    return <button onClick={showAlert}>Show Alert</button>;
 }
