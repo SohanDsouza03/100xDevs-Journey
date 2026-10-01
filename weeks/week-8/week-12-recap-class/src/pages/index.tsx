@@ -1,20 +1,21 @@
-
+import Image from 'next/image'
 import { Inter } from 'next/font/google'
-import { VideoCard } from "../components/VideoCard";
+import { VideoCard } from '@/components/VideoCard'
+import { VIDEOS } from '@/styles/videos'
+import { VideoGrid } from '@/components/VideoGrid'
+import { Appbar } from '@/components/Appbar'
+import { LeftBar } from '@/components/LeftBar'
 
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
   return (
-    <div>
-      <VideoCard
-        title={"How to learn coding in 30 days | 30 day plan | Code with me"}
-        image={"sohan.png"}
-        thumbImage={"sohan.png"}
-        author={"Sohan Dsouza"}
-        views={"100k"}
-        timestamp={"2 days ago"}
-      ></VideoCard>
-    </div>
+    <main>
+      <Appbar/>
+      <div className="flex">
+        <LeftBar />
+        <VideoGrid />
+      </div>
+    </main>
   )
 }
